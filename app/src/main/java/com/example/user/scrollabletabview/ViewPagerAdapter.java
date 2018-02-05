@@ -7,10 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.user.scrollabletabview.fragments.OneFragment;
 
 /**
- * Created by USER on 2/4/2018.
+ * Created by SHOVON on 2/4/2018.
  */
 
-class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private int NUM_ITEMS = 10;
 
