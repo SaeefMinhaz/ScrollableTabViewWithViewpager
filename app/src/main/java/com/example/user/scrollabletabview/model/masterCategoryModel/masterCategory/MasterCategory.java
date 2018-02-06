@@ -1,4 +1,4 @@
-package com.example.user.scrollabletabview.model.masterCategoryModel;
+package com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

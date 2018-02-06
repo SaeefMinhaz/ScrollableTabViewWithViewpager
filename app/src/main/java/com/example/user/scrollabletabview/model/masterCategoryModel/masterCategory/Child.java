@@ -1,4 +1,4 @@
-package com.example.user.scrollabletabview.model.masterCategoryModel;
+package com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -17,9 +17,34 @@ public class Child {
     @SerializedName("thumb")
     @Expose
     private String thumb;
+
     @SerializedName("banner")
     @Expose
     private String banner;
+
+    @SerializedName("parent_id")
+    @Expose
+    private String parent_id;
+
+    @SerializedName("starting_price")
+    @Expose
+    private String starting_price;
+
+    public String getParent_id() {
+        return parent_id;
+    }
+
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
+    }
+
+    public String getStarting_price() {
+        return starting_price;
+    }
+
+    public void setStarting_price(String starting_price) {
+        this.starting_price = starting_price;
+    }
 
     public Integer getId() {
         return id;

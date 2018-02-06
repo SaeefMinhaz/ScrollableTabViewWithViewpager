@@ -1,9 +1,11 @@
 package com.example.user.scrollabletabview.apiNetworking;
 
-import com.example.user.scrollabletabview.model.masterCategoryModel.MasterCategory;
+import com.example.user.scrollabletabview.model.masterCategoryModel.CategoryChild.Secondary;
+import com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory.MasterCategory;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -13,14 +15,12 @@ import retrofit2.http.Query;
 public interface ApiClient {
 
     //master category with children items
-    @GET("v1/categories")
+    @GET("categories")
     Call <MasterCategory> getMasterCategoryApiResponse(@Query("with") String categorySort);
 
-//    //by latitude & longitude
-//    @GET("data/2.5/forecast")
-//    Call <WeatherData> getDataByLatLon(@Query("lat") Float latitude,
-//                                       @Query("lon") Float longitude,
-//                                       @Query("appid") String apiTokenKey);
+    //secondary/ child items
+    @GET("categories/{masterCategoryId}/secondaries")
+    Call <Secondary> getChildFromMasterCategory(@Path("masterCategoryId") int masterCategoryId);
 //
 //    //by celsius format
 //    @GET("data/2.5/forecast")

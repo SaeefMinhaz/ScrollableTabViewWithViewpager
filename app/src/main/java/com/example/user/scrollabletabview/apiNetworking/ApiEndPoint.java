@@ -6,7 +6,7 @@ package com.example.user.scrollabletabview.apiNetworking;
 
 public class ApiEndPoint {
 
-    public static final String BASE_URL = "http://api.dev-sheba.xyz/";
+    public static final String BASE_URL = "http://api.dev-sheba.xyz/v1/";
 
 //    public static final String API_KEY = "e842bad857fc2320feebce44eca57e2f";
 }

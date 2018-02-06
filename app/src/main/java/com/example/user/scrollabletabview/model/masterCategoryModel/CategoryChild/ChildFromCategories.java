@@ -1,16 +1,13 @@
-package com.example.user.scrollabletabview.model.masterCategoryModel;
+package com.example.user.scrollabletabview.model.masterCategoryModel.CategoryChild;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 /**
- * Created by SHOVON on 2/5/2018.
+ * Created by USER on 2/6/2018.
  */
 
-public class Category {
-
+public class ChildFromCategories {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -23,12 +20,12 @@ public class Category {
     @SerializedName("banner")
     @Expose
     private String banner;
-    @SerializedName("slug")
+    @SerializedName("parent_id")
     @Expose
-    private String slug;
-    @SerializedName("children")
+    private Integer parentId;
+    @SerializedName("starting_price")
     @Expose
-    private ArrayList<Child> children = null;
+    private Integer startingPrice;
 
     public Integer getId() {
         return id;
@@ -62,19 +59,19 @@ public class Category {
         this.banner = banner;
     }
 
-    public String getSlug() {
-        return slug;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public ArrayList<Child> getChildren() {
-        return children;
+    public Integer getStartingPrice() {
+        return startingPrice;
     }
 
-    public void setChildren(ArrayList<Child> children) {
-        this.children = children;
+    public void setStartingPrice(Integer startingPrice) {
+        this.startingPrice = startingPrice;
     }
 }

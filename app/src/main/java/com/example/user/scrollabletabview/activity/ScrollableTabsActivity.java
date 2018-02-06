@@ -5,13 +5,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.user.scrollabletabview.R;
-import com.example.user.scrollabletabview.ViewPagerAdapter;
+import com.example.user.scrollabletabview.adapter.ViewPagerAdapter;
 import com.example.user.scrollabletabview.apiNetworking.ApiClient;
 import com.example.user.scrollabletabview.apiNetworking.ApiService;
-import com.example.user.scrollabletabview.model.masterCategoryModel.MasterCategory;
+import com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory.Category;
+import com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory.MasterCategory;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,8 @@ public class ScrollableTabsActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     ViewPagerAdapter adapterViewPager;
-    ArrayList<MasterCategory> masterCategories = new ArrayList<>();
+    ArrayList<MasterCategory> masterCategories;
+    ArrayList<Category> categories;
     ApiClient apiClient;
 
     @Override
@@ -42,8 +45,8 @@ public class ScrollableTabsActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 //        setupViewPager(viewPager);
-        adapterViewPager = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapterViewPager);
+//        adapterViewPager = new ViewPagerAdapter(getSupportFragmentManager(), masterCategories);
+//        viewPager.setAdapter(adapterViewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
@@ -57,10 +60,25 @@ public class ScrollableTabsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MasterCategory> call, Response<MasterCategory> response) {
                 if (response.isSuccessful()){
-                        Toast.makeText(ScrollableTabsActivity.this,"Total Master Category size"+response.body().getCategories().size()
+                    if (response.body().getCode()==200){
+                        Toast.makeText(ScrollableTabsActivity.this,"Total Master Category size "+response.body().getCategories().size()
                                 ,Toast.LENGTH_SHORT).show();
+
+                        categories = response.body().getCategories();
+                        Log.w("categories","res"+masterCategories);
+
+                        adapterViewPager = new ViewPagerAdapter(getSupportFragmentManager(), categories);
+                        viewPager.setAdapter(adapterViewPager);
+
+                    } else {
+                        Toast.makeText(ScrollableTabsActivity.this,"response code "+response.body().getCode()
+                                ,Toast.LENGTH_SHORT).show();
+
+
+                    }
+
                 } else {
-                    Toast.makeText(ScrollableTabsActivity.this,"Error Code"+ response.body().getCode(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScrollableTabsActivity.this,"Error Code "+ response.body().getCode(),Toast.LENGTH_SHORT).show();
                 }
             }
 
