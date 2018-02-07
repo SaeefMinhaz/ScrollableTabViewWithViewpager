@@ -1,12 +1,14 @@
 package com.example.user.scrollabletabview.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.scrollabletabview.R;
 import com.example.user.scrollabletabview.model.masterCategoryModel.CategoryChild.ChildFromCategories;
@@ -47,7 +49,7 @@ public class CategoryItemAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
 
         ViewHolder viewHolder;
         if(view == null){
@@ -56,6 +58,7 @@ public class CategoryItemAdapter extends BaseAdapter{
             viewHolder.serviceItemImageIV = (ImageView) view.findViewById(R.id.serviceItemImageIV);
             viewHolder.serviceItemTitleTV = (TextView) view.findViewById(R.id.serviceItemTitleTV);
             viewHolder.serviceItemPriceTV = (TextView) view.findViewById(R.id.serviceItemPriceTV);
+            viewHolder.itemsCardView = (CardView) view.findViewById(R.id.itemsCardView);
 
             view.setTag(viewHolder);
         } else {
@@ -63,7 +66,19 @@ public class CategoryItemAdapter extends BaseAdapter{
         }
 
         viewHolder.serviceItemTitleTV.setText(childFromCategories.get(position).getName());
-        viewHolder.serviceItemPriceTV.setText(childFromCategories.get(position).getStartingPrice());
+//        if(childFromCategories.get(position).getStartingPrice()!=null){
+//            viewHolder.serviceItemPriceTV.setText(childFromCategories.get(position).getStartingPrice());
+//        }
+
+        viewHolder.itemsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(childFromCategories.get(position)!=null){
+                    Toast.makeText(context,""+childFromCategories.get(position).getName().toString(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
         return view;
     }
@@ -72,6 +87,7 @@ public class CategoryItemAdapter extends BaseAdapter{
         ImageView serviceItemImageIV;
         TextView serviceItemTitleTV;
         TextView serviceItemPriceTV;
+        CardView itemsCardView;
 
     }
 }

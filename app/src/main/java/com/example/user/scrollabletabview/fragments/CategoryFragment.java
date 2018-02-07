@@ -83,7 +83,7 @@ public class CategoryFragment extends Fragment {
             public void onResponse(Call<Secondary> call, Response<Secondary> response) {
                if(response.isSuccessful()){
                    if (response.body().getCode()==200){
-                       Toast.makeText(getActivity()," "+ response.body().getCategoryofChild().getChildFromCategories(),Toast.LENGTH_SHORT).show();
+//                       Toast.makeText(getActivity()," "+ response.body().getCategoryofChild().getChildFromCategories(),Toast.LENGTH_SHORT).show();
                        childFromCategories = response.body().getCategoryofChild().getChildFromCategories();
                        categoryItemAdapter = new CategoryItemAdapter(childFromCategories,getActivity());
                        categoryGridView.setAdapter(categoryItemAdapter);
@@ -91,13 +91,13 @@ public class CategoryFragment extends Fragment {
                        Toast.makeText(getActivity(),"Error Code "+ response.body().getCode(),Toast.LENGTH_SHORT).show();
                    }
                }else{
-
+                   Toast.makeText(getActivity(),"Error Code "+ response.body().getCode(),Toast.LENGTH_SHORT).show();
                }
             }
 
             @Override
             public void onFailure(Call<Secondary> call, Throwable t) {
-
+                Toast.makeText(getActivity(),"Please try again",Toast.LENGTH_SHORT).show();
             }
         });
     }
