@@ -16,7 +16,7 @@ public interface ApiClient {
 
     //master category with children items
     @GET("categories")
-    Call <MasterCategory> getMasterCategoryApiResponse(@Query("with") String categorySort);
+    Call <MasterCategory> getMasterCategoryApiResponse();
 
     //secondary/ child items
     @GET("categories/{masterCategoryId}/secondaries")

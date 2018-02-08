@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.user.scrollabletabview.R;
 import com.example.user.scrollabletabview.model.masterCategoryModel.CategoryChild.ChildFromCategories;
-import com.example.user.scrollabletabview.model.masterCategoryModel.masterCategory.Child;
 
 import java.util.ArrayList;
 

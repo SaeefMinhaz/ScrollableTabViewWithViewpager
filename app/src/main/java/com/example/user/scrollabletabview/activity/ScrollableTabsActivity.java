@@ -55,7 +55,7 @@ public class ScrollableTabsActivity extends AppCompatActivity {
     }
 
     private void getAPIMasterCategory() {
-        Call<MasterCategory> call = apiClient.getMasterCategoryApiResponse("children");
+        Call<MasterCategory> call = apiClient.getMasterCategoryApiResponse();
         call.enqueue(new Callback<MasterCategory>() {
             @Override
             public void onResponse(Call<MasterCategory> call, Response<MasterCategory> response) {
